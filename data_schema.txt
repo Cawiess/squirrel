@@ -1,0 +1,30 @@
+{
+    "organization_name" : "name of organization",
+    "countries": [
+        {
+            "country_name": "name of country
+            "jobs": [
+                {
+                    "job_title": "title of job",
+                    "closing_date": "yyyy-mm-dd"
+                    "job_description": "long string explaining the job..."
+                }
+            ]
+        },
+        {
+            "country_name": "name of another country
+            "jobs": [
+                {
+                    "job_title": "title of job",
+                    "closing_date": "yyyy-mm-dd"
+                    "job_description": "long string explaining the job..."
+                },
+                {
+                    "job_title": "title of job",
+                    "closing_date": "yyyy-mm-dd"
+                    "job_description": "long string explaining the job..."
+                }
+            ]
+        }
+    ]
+}
