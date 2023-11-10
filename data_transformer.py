@@ -1,5 +1,4 @@
 # The purpose of the DataTransformer class is to strucure the data according to the data schema defined for the MongoDB database.
-# See schema in data schema.txt
 
 class DataTransformer:
     def __init__(self, extracted_data):
@@ -20,3 +19,37 @@ class DataTransformer:
 
     def get_transformed_data(self):
         return self.organization_centric_data
+
+# Schema for reference
+'''
+{
+    "organization_name" : "name of organization",
+    "countries": [
+        {
+            "country_name": "name of country
+            "jobs": [
+                {
+                    "job_title": "title of job",
+                    "closing_date": "yyyy-mm-dd"
+                    "job_description": "long string explaining the job..."
+                }
+            ]
+        },
+        {
+            "country_name": "name of another country
+            "jobs": [
+                {
+                    "job_title": "title of job",
+                    "closing_date": "yyyy-mm-dd"
+                    "job_description": "long string explaining the job..."
+                },
+                {
+                    "job_title": "title of job",
+                    "closing_date": "yyyy-mm-dd"
+                    "job_description": "long string explaining the job..."
+                }
+            ]
+        }
+    ]
+}
+'''
