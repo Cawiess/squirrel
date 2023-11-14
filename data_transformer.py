@@ -1,4 +1,10 @@
 # The purpose of the DataTransformer class is to strucure the data according to the data schema defined for the MongoDB database.
+import json
+
+def load_extracted_organizations(json_file):
+    with open(f"{json_file}") as file:
+        data = json.loads(file.read()) 
+        return data
 
 class DataTransformer:
     def __init__(self, extracted_data):

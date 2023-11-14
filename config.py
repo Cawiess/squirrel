@@ -2,6 +2,7 @@
 
 from datetime import datetime, timedelta
 
+'''
 countries = ['Jordan', 
              'Syria', 
              'Lebanon', 
@@ -19,7 +20,12 @@ countries = ['Jordan',
              'Bahrain', 
              'Kuwait', 
              'Israel']
+'''
+
+countries = ['Jordan']
 
 pages = [0, 40, 80] #represent number of results to show. To get around the "Show more button".
 
 export_file_name = f"extracted_organizations_export_{datetime.today().strftime('%d-%m-%Y')}.json"
+
+extracted_organizations_json = 'extracted_organizations_export_14-11-2023.json' # raw json data for use in DataTransformer
