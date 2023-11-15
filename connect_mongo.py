@@ -17,6 +17,14 @@ class MongoDBConnector:
     def list_databases(self):
         """Lists all databases in the MongoDB server."""
         return self.client.list_database_names()
+    
+    def list_collections(self):
+        """Lists all collections in the current database."""
+        return self.db.list_collection_names()
+
+    def show_first_document(self):
+        """Shows the first document in the current collection."""
+        return self.collection.find_one()
 
     # You might also want to add a method to connect to a different database/collection
     def switch_database(self, db_name, collection_name):
@@ -28,13 +36,3 @@ class MongoDBConnector:
     def close_connection(self):
         """Closes the MongoDB connection."""
         self.client.close()
-
-
-uri = 'mongodb://rootuser:rootpass@localhost:27017/'
-
-db_name = 'organizations'
-collection_name = 'organization_data'
-
-db_connector = MongoDBConnector(uri, db_name, collection_name)
-print(db_connector.list_databases())
-db_connector.close_connection()
