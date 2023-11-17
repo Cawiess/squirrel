@@ -30,8 +30,6 @@ class MongoDBConnector:
         query = {"organization_name": organization_name}
         results = self.collection.find(query)
 
-
-
         return results
 
     # You might also want to add a method to connect to a different database/collection
@@ -44,3 +42,14 @@ class MongoDBConnector:
     def close_connection(self):
         """Closes the MongoDB connection."""
         self.client.close()
+
+    def setup_organizations_db(self):
+            """Sets up the 'organizations' database."""
+            # Check if 'organizations' database exists
+            if 'organizations' in self.client.list_database_names():
+                # Drop the database if it exists
+                self.client.drop_database('organizations')
+
+            # Create a new 'organizations' database with a collection 'organization_data'
+            self.switch_database('organizations', 'organization_data')
+            # The creation of a collection is implicit, so no need for explicit creation

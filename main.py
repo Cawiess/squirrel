@@ -20,15 +20,14 @@ def main():
 
     # Inserting one organization into database
     db_connector = MongoDBConnector(uri, db_name, collection_name)
-    print(db_connector.list_databases())
-    print(db_connector.list_collections())
-
-    #print(transformer.get_transformed_data())
+    db_connector.setup_organizations_db()
 
     one_organization_document = transformer.get_transformed_data()['NRC - Norwegian Refugee Council']
     db_connector.insert_organization(one_organization_document)
-    #print(db_connector.show_first_document())
-    print(db_connector.find_organization('NRC - Norwegian Refugee Council'))
+    db_connector.close_connection()
+
+    print("All done, good bye!")
+
 
 
     
