@@ -12,13 +12,12 @@ class DataTransformer:
         self.organization_centric_data = {}
 
     def transform_data(self):
-        organization_centric_data = {}
 
-        for country, organizations in data.items():
+        for country, organizations in self.extracted_data.items():
             #print(country, '-----------')
             for organization, job_list in organizations.items():
-                if organization not in organization_centric_data:
-                    organization_centric_data[organization] = {
+                if organization not in self.organization_centric_data:
+                    self.organization_centric_data[organization] = {
                         "organization_name": organization,
                         "countries_of_operation": []
                     }
@@ -33,7 +32,7 @@ class DataTransformer:
                     
                     country_job_data = {"country_name": country, "jobs": formatted_job_list}
         
-                organization_centric_data[organization]['countries_of_operation'].append(country_job_data)
+                self.organization_centric_data[organization]['countries_of_operation'].append(country_job_data)
 
                 
 

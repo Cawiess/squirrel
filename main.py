@@ -23,6 +23,8 @@ def main():
     print(db_connector.list_databases())
     print(db_connector.list_collections())
 
+    #print(transformer.get_transformed_data())
+
     one_organization_document = transformer.get_transformed_data()['NRC - Norwegian Refugee Council']
     db_connector.insert_organization(one_organization_document)
     #print(db_connector.show_first_document())
