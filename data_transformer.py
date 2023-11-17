@@ -19,17 +19,18 @@ class DataTransformer:
                         "organization_name": organization, 
                         "countries": []
                     }
-                
-                    formatted_job_list = []
-                    for job in job_list:
-                        formatted_job_list.append({
-                            "job_title": job[0],
-                            "closing_date": job[1],
-                            "job_description": job[2]
-                        })
+
+                formatted_job_list = []
+                for job in job_list:
+                    formatted_job_list.append({
+                        "job_title": job[0],
+                        "closing_date": job[1],
+                        "job_description": job[2]
+                    })
 
                 country_job_data = {"country_name": country, "jobs": formatted_job_list}
-                self.organization_centric_data[organization]["countries"].append(country_job_data)
+            self.organization_centric_data[organization]["countries"].append(country_job_data)
+
                 
 
     def get_transformed_data(self):

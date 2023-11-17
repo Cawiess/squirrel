@@ -25,6 +25,14 @@ class MongoDBConnector:
     def show_first_document(self):
         """Shows the first document in the current collection."""
         return self.collection.find_one()
+    
+    def find_organization(self, organization_name):
+        query = {"organization_name": organization_name}
+        results = self.collection.find(query)
+
+
+
+        return results
 
     # You might also want to add a method to connect to a different database/collection
     def switch_database(self, db_name, collection_name):

@@ -25,7 +25,8 @@ def main():
 
     one_organization_document = transformer.get_transformed_data()['NRC - Norwegian Refugee Council']
     db_connector.insert_organization(one_organization_document)
-    print(db_connector.show_first_document())
+    #print(db_connector.show_first_document())
+    print(db_connector.find_organization('NRC - Norwegian Refugee Council'))
 
 
     
