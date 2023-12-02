@@ -3,6 +3,7 @@
 
 
 from pymongo import MongoClient
+import json
 
 class MongoDBConnector:
     def __init__(self, uri, db_name, collection_name):
@@ -13,6 +14,11 @@ class MongoDBConnector:
     def insert_organization(self, organization):
         """Inserts a single organization document into MongoDB."""
         self.collection.insert_one(organization)
+
+    def insert_all_organizations(self, organization_centric_data):
+        for organization, information in organization_centric_data.items():
+            self.collection.insert_one(information)
+
 
     def list_databases(self):
         """Lists all databases in the MongoDB server."""
@@ -31,6 +37,10 @@ class MongoDBConnector:
         results = self.collection.find(query)
 
         return results
+    
+    def count_organizations(self):
+        """Counts the number of organization documents in the MongoDB collection."""
+        return self.collection.count_documents({})
 
     # You might also want to add a method to connect to a different database/collection
     def switch_database(self, db_name, collection_name):
@@ -53,3 +63,17 @@ class MongoDBConnector:
             # Create a new 'organizations' database with a collection 'organization_data'
             self.switch_database('organizations', 'organization_data')
             # The creation of a collection is implicit, so no need for explicit creation
+
+
+    def list_countries_of_operation(self, organization_name):
+        """Lists the country names of operation for a given organization."""
+        query = {"organization_name": organization_name}
+        result = self.collection.find_one(query)
+
+        country_names = []
+        if result and "countries_of_operation" in result:
+            for country in result["countries_of_operation"]:
+                if "country_name" in country:
+                    country_names.append(country["country_name"])
+
+        return country_names

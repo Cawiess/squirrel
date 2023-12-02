@@ -1,6 +1,6 @@
 {
     "organization_name" : "name of organization",
-    "countries": [
+    "countries_of_operation": [
         {
             "country_name": "name of country
             "jobs": [

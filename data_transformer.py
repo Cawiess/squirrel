@@ -30,7 +30,8 @@ class DataTransformer:
                             "job_description": job[2]
                         })
                     
-                    country_job_data = {"country_name": country, "jobs": formatted_job_list}
+
+                country_job_data = {"country_name": country, "jobs": formatted_job_list}
         
                 self.organization_centric_data[organization]['countries_of_operation'].append(country_job_data)
 
@@ -43,7 +44,7 @@ class DataTransformer:
 '''
 {
     "organization_name" : "name of organization",
-    "countries": [
+    "countries_of_operation": [
         {
             "country_name": "name of country
             "jobs": [

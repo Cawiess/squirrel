@@ -15,15 +15,16 @@ def main():
     print('running data transformer')
     transformer = DataTransformer(load_extracted_organizations(extracted_organizations_json))
     transformer.transform_data()
-    transformer.get_transformed_data()
+    organization_centric_data = transformer.get_transformed_data()
     print('Done')
 
     # Inserting one organization into database
     db_connector = MongoDBConnector(uri, db_name, collection_name)
     db_connector.setup_organizations_db()
 
-    one_organization_document = transformer.get_transformed_data()['NRC - Norwegian Refugee Council']
-    db_connector.insert_organization(one_organization_document)
+    #one_organization_document = transformer.get_transformed_data()['NRC - Norwegian Refugee Council']
+    #db_connector.insert_organization(one_organization_document)
+    db_connector.insert_all_organizations(organization_centric_data)
     db_connector.close_connection()
 
     print("All done, good bye!")
