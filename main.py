@@ -5,11 +5,11 @@ from connect_mongo import MongoDBConnector
 from config import countries, pages, export_file_name, extracted_organizations_json, uri, db_name, collection_name
 
 def main():
-    print("Scraping organizations...")
-    #scraper = JobScraper(countries, pages)
-    #scraper.scrape_jobs()
-    #scraper.export_data(export_file_name)
-    print('Done')
+    # print("Scraping organizations...")
+    # scraper = JobScraper(countries, pages)
+    # scraper.scrape_jobs()
+    # scraper.export_data(export_file_name)
+    # print('Done')
 
     # Formatting data for insertion into database
     print('running data transformer')

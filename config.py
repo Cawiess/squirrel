@@ -2,7 +2,7 @@
 
 from datetime import datetime, timedelta
 
-'''
+
 countries = ['Jordan', 
              'Syria', 
              'Lebanon', 
@@ -20,9 +20,9 @@ countries = ['Jordan',
              'Bahrain', 
              'Kuwait', 
              'Israel']
-'''
 
-countries = ['Jordan']
+
+#countries = ['Jordan']
 
 pages = [0, 40, 80] #represent number of results to show. To get around the "Show more button".
 
