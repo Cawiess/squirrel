@@ -12,64 +12,25 @@ class DataTransformer:
         self.organization_centric_data = {}
 
     def transform_data(self):
-
         for country, organizations in self.extracted_data.items():
-            #print(country, '-----------')
             for organization, job_list in organizations.items():
                 if organization not in self.organization_centric_data:
                     self.organization_centric_data[organization] = {
                         "organization_name": organization,
-                        "countries_of_operation": []
+                        "jobs": []
+
                     }
                     
-                    formatted_job_list = []
-                    for job in job_list:
-                        formatted_job_list.append({
-                            "job_title": job[0],
-                            "job_closing_date": job[1],
-                            "job_description": job[2]
-                        })
                     
-
-                country_job_data = {"country_name": country, "jobs": formatted_job_list}
-        
-                self.organization_centric_data[organization]['countries_of_operation'].append(country_job_data)
+                for job in job_list:
+                    self.organization_centric_data[organization]['jobs'].append({
+                        "job_title": job[0],
+                        "job_location": country,
+                        "job_closing_date": job[1],
+                        "job_description": job[2]
+                    })
 
                 
 
     def get_transformed_data(self):
         return self.organization_centric_data
-
-# Schema for reference
-'''
-{
-    "organization_name" : "name of organization",
-    "countries_of_operation": [
-        {
-            "country_name": "name of country
-            "jobs": [
-                {
-                    "job_title": "title of job",
-                    "closing_date": "yyyy-mm-dd"
-                    "job_description": "long string explaining the job..."
-                }
-            ]
-        },
-        {
-            "country_name": "name of another country
-            "jobs": [
-                {
-                    "job_title": "title of job",
-                    "closing_date": "yyyy-mm-dd"
-                    "job_description": "long string explaining the job..."
-                },
-                {
-                    "job_title": "title of job",
-                    "closing_date": "yyyy-mm-dd"
-                    "job_description": "long string explaining the job..."
-                }
-            ]
-        }
-    ]
-}
-'''
